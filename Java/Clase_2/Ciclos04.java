@@ -4,7 +4,7 @@
  * Lo hacemos primero con la clase Scanner.
  * Luego lo hacemos con la clase JOptionPane.
  */
-package Ciclos04;
+
 
 import java.util.Scanner;
 import javax.swing.JOptionPane;
