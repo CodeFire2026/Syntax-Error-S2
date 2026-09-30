@@ -4,7 +4,7 @@ Para cada uno indicar si es par o impar.
 Primero lo haremos con la clase Scanner
 Luego con la clase JOptionPane
 */
-package Ciclos03;
+
 import javax.swing.JOptionPane;
 
 
