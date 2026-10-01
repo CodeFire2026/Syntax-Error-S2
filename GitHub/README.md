@@ -8,10 +8,13 @@
 
 ## 📑 ÍNDICE
 
-- 🖥️ Las bases de Bash (CLIs)
-- ⚙️ Configuración e información de Git
-- 🔄 Día a día con Git
-- 🧰 Misceláneos a saber
+- 🖥️ Clase 1 - Uso de GitHub y Las bases de Bash (CLIs)
+- 🗝️ Clase 2 - Clves SSH, Configuración e Información de Git
+- ⚙️ Clase 3 - Git y GitHub (Sincronización)
+- 🔄 Clase 4 - Primer Push y Área de Trabajo
+- 🧰 Clase 5 - Git Tag y Versiones
+- 🔄️ Clase 6 - Desacer Cambios y Correcciones
+- 🔎 Clase 7 - Git Diff
 
 ---
 
@@ -23,7 +26,240 @@
 
 ---
 
-# 🖥️ LAS BASES DE BASH (CLIs)
+# 🖥️ Clase 1 - Uso de GitHub y Las bases de Bash (CLIs)
+
+### 🐙 `Que es GitHub`
+
+**GitHub** es una plataforma que nos permite almacenar repositorios de `Git` y utilizarlos como servidores remotos.
+También ofrece una interfaz visual e interactiva que permite hacer varias tareas sin depender siempre de la terminal.
+
+Entre las cosas que se puden hacer en GitHub están:
+
+    📁 Crear repositorios o importarlos.
+
+    👥 Armar organizaciones.
+
+    📊 Gestionar proyectos.
+
+    🔎 Explorar repositorios de otras personas.
+
+    🤝 Participar en proyectos ajenos.
+
+    ⭐ Marcar repositorios con estrellas.
+
+    🌎 Difundir nuestros propios proyectos.
+
+---
+
+### 🛠️ Opciones principales de GitHub
+
+    Opción:                             Descripción:
+
+    .Importacion de Repositorios        Traer un repositorio que ya existe
+    .Nuevo Repositorio                  Armar un repositorio desde cero
+    .Nueva Organización                 Armar un grupo para reunir proyectos y personas
+    .Nuevo Projecto                     Armar un espacio para ordenar tareas y proyectos
+    .Nuevo Gist                         Compartir fragmetos pequeños de código
+
+---
+
+### 📦 Crear un repositorio
+
+Para crear un repositorio hay que elegir:
+
+`Nuevo Repositorio`
+
+Despues se le asigna un nombre, por ejemplo:
+
+```bash
+Prueba-Inicio-Repo
+```
+
+Tambien se puede sumar: 
+
+    📝 Una descripción.
+
+    🔒 Definir si será público o privado.
+
+    📄 Un archivo README.
+
+    ⚖️ Una licencia.
+
+    🚫 Un archivo < .gitignore >
+
+Y por último:
+
+`Crear Repositorio`
+
+---
+
+### 📄 README.md
+
+El archivo **Readme.md** es lo primero que GitHub muestra al entrar a un repositorio.
+
+Es recomendable usarlo para dejar en claro:
+
+    📌 De qué se trata el proyecto.
+
+    🛠️ Con qué herramientas está hecho.
+
+    📋 Qué hace falta para usarlo.
+
+    ▶️ Cómo ponerlo en marcha.
+
+    🤝 Cómo sumar cambios.
+
+    👨‍💻 Quiénes forman parte.
+
+```bash
+[!Tip]
+
+El README cumple el rol de "Carta de presentación del Proyecto".
+```
+
+---
+
+### 🔐 HTTPS, SSH y GITHUB CLI
+
+GitHub permite la conexión mediante dos vías principales:
+
+    Metodo:                  Ejemplo:
+
+    HTTPS                    https://github.com/CodeFire2026/Syntax-Error-S2.git
+
+    SSH                      git@github.com:CodeFire2026/Syntax-Error-S2.git
+
+    GitHub CLI               gh repo clone CodeFire2026/Syntax-Error-S2
+
+Hoy en día GitHub no acepta la contraseña comun de la cuenta para autenticar operaciones Git por HTTPS.
+
+En el caso de **HTTPS** se suele usar **tokens** de acceso personal, mietras que **SSH** se apoya en un par de clases: Una **Publica** y una **Privada** y en GitHub CLI es una herramienta oficial de GitHub usa sus funciones desde la terminal. Se relaciona con HTTPS y SSH porque en `gh auth login` se elige HTTPS o SST como protocolo de Git; si se opta por HTTPS y se acepta autenticar Git con las crecdenciales de GitHub, `gh` guarda esas credenciales automaticamente y evita tener que configurarlas o ingresarlas manuelamente.
+
+---
+
+### 🔗 Conectar un repositorio de GitHub con nuestra computadora
+
+Una manera práctica de trabajar es crear el repositorio primero en GitHub y después clonarlo en la computadora.
+
+**`1️⃣ Crear el repositorio en GitHub`**
+
+Primero se crea el repositorio desde la página de GitHub.
+
+**`2️⃣ Copiar el enlace HTTPS o SSH`**
+
+Ejemplo:
+
+```bash
+< https://github.com/CodeFire2026/Syntax-Error-S2.git > o < git@github.com:CodeFire2026/Syntax-Error-S2.git >
+```
+
+**`3️⃣ Abrir Git Bash`**
+
+Nos ubicamos en la carpeta donde queremos guardar los proyectos.
+
+```bash
+<cd Documentos>
+```
+
+Creamos una carpeta
+
+```bash
+<mkdir "Proyecto">
+```
+
+Entramos 
+
+```bash
+<cd "Proyecto">
+```
+
+**`4️⃣ Clonar el repositorio`**
+
+
+```bash
+<git clone https://github.com/CodeFire2026/Syntax-Error-S2.git>
+```
+
+Entramos al repositorio:
+
+```bash
+<cd Syntax-Error-S2>
+```
+
+**`🔄 Actualizar el repositorio`**
+
+```bash
+<git pull origin main>
+```
+
+Tambien se puede consultar la información del servidor remoto:
+
+```bash
+<git fetch>
+```
+
+Ver las ramas:
+
+```bash
+<git branch>
+```
+<p>
+
+
+> ⚠️ **IMPORTANTE**
+>
+> Cualquier `<cosa-entre-flechas>` es a modo de ejemplo y debe reemplazarse con su respectivo nombre, comando o aclaración sin incluir las flechas, a menos que se indique lo contrario.
+>
+> Si hay comillas `" "` en el comando es porque sí deben incluirse. Si no funciona, probar sin comillas.
+<p>
+
+---
+
+### 📝 Crear un README desde Git Bash
+
+```bash
+<touch README.md>
+```
+
+Luego se puede revisar el estado:
+
+```bash
+<git status>
+```
+
+Agregar los archivos
+
+```bash
+< git add . >
+```
+
+Creamos el commit
+
+```bash
+<git commit -m "Creamos el Readme">
+```
+
+Vemos el historial (comprobamos si se creo correctamente el commit)
+
+```bash
+<git log>
+```
+
+Y por último subimos los cambios
+
+```bash
+<git push origin main>
+```
+<p>
+
+> ⚠️ **IMPORTANTE**
+>
+> Cualquier `<cosa-entre-flechas>` es a modo de ejemplo y debe reemplazarse con su respectivo nombre, comando o aclaración sin incluir las flechas, a menos que se indique lo contrario.
+>
+> Si hay comillas `" "` en el comando es porque sí deben incluirse. Si no funciona, probar sin comillas.
+<p>
+
+---
 
 ### ⌨️ `Tab`
 
@@ -229,7 +465,169 @@ La opción `-r` permite borrar directorios.
 
 ---
 
-# ⚙️ CONFIGURACIÓN E INFORMACIÓN DE GIT
+# 🗝️ Clase 2 - Clves SSH, Configuración e Información de Git
+
+### 🔐 ¿Qué es una clave SSH?
+
+Las claves SSH sirven para establecer una conexión segura entre la computadora y GitHub.
+
+Por lo general se trabaja con dos archivos:
+
+```bash
+    Clave Privada
+
+    Clave Publica (.pub)
+```
+
+**⚠️ !Precaución**
+
+    La clave privada "JAMÁS" debe compartirse.
+
+---
+
+### 📤 Cargar una clave SSH pública en GitHub
+
+    [!Nota]
+    Si este proceso ya se hizo antes en el equipo, en general no hace falta repetirlo.
+<p>
+
+`1️⃣ Buscar la clave pública`
+Entramos a la carpeta:
+
+```bash
+.ssh
+```
+
+Buscamos un archivo que termine en:
+
+```bash
+.pub
+```
+
+Por ejemplo:
+
+```bash
+id_ed25519.pub
+```
+
+Abrimos el archivo y copiamos todo lo que contiene.
+<p>
+
+`2️⃣ Agregarla en GitHub`
+
+Dentro de GitHub vamos a: 
+
+```bash
+Settings
+    ↓
+SSH and GPS keys
+    ↓
+New SSH key
+```
+
+Le ponemos un nombre que identifique al dispositivo y pegamos la clave pública.
+
+    💡 Conviene usar como nombre de la clave el nombre de la computadora con la que estamos trabajando.
+
+Por ejemplo:
+
+```bash
+Notebook-Jesus
+```
+
+Cada computadora puede tener su propia clave SSH.
+
+### Comandos de Git
+
+Ver ramas
+
+```bash
+<git branch>
+```
+
+Cambiar a una rama
+
+```bash
+<git branch>
+```
+
+Cambiar a una rama
+
+```bash
+<git checkout main o git switch main>
+```
+
+Renombrar **MASTER** o **MAIN**
+
+```bash
+<git branch -M main>
+```
+
+Conectar un repositorio remoto
+
+```bash
+<git remote add origin https://github.com/CodeFire2026/Syntax-Error-S2.git>
+```
+
+Ver los repositorios remotos configurados
+
+```bash
+<git remote -v>
+```
+
+Fusionar una rama
+
+```bash
+<git remote second>
+```
+[Esto extrae los cambio de la RAMA SECOND a la rama que estamos parado]
+
+---
+
+### `💾 Commit y Push`
+
+Crear un commit de archivos ya reastrados
+
+```bash
+<git commit -am "Uso de GitHub 01">
+```
+
+Subir los archivos
+
+```bash
+<git push origin main>
+```
+
+[!Important]
+
+<git commit -am> solo agrega automaticamente archivos que git ya venía siguiendo. Los archivos nuevos necesitan primero un <git add>.
+
+---
+
+### `🌳 ¿Qué pasa si tenemos master y main?`
+
+Puede darse el caso de que existan dos ramas
+
+```bash
+master 
+main
+```
+
+Si quieremos que `master` sea la principal
+
+1. Entramos al repositorio en GitHub.
+
+2. Vamos a Settings.
+
+3. Buscamos la configuración de Branches.
+
+4. Ponemos master como rama principal.
+
+5. Revisamos que todo ande bien.
+
+6. Después se puede borrar master si ya no hace falta.
+
+---
 
 ### ⚙️ `git config`
 
@@ -272,7 +670,201 @@ Muestra por pantalla la dirección y el disco donde está instalado Git, cuánto
 
 ---
 
-# 🔄 DÍA A DÍA CON GIT
+### 🔗 `git remote`
+
+Por sí solo, muestra los nombres de los remotos a los que estamos conectados. Lo básico es que al ingresar **git remote** imprima **origin**.
+
+---
+
+### 🌱 `git branch`
+
+Sirve para ver las ramas existentes y en cuál estamos preparados.
+
+```bash
+git branch
+```
+
+---
+
+### 🔀 `git checkout`
+
+Principalmente se usa para cambiar de rama. Aunque también puede:
+
+    . Crea nuevas ramas.
+
+    . Restaurar archivos a una versión anterior.
+
+    . Ir a una versión de un commit especifico.
+
+    . Ir al commit anterior.
+
+---
+
+### 🔄 `git switch <nombre-de-rama>`
+
+Sirve para cambiar entre ramas. Es similar a **checkout**, pero menos ambiguo y más seguro. Se recomienda usarlo justo con **git restore** si se desea imitar las funciones de **checkout**.
+
+---
+
+### 🔀 `git merge <nombre-de-rama-fuente>`
+
+Sirve para fusionar dos ramas distintas. Para esto primero hay que prepararse en la rama que va a recibir los cambios.
+
+Ejemplo:
+
+```bash
+git switch main
+git merge second
+```
+
+Esto resultaría en los cambios de **second** aplicándose a **main**
+
+---
+
+# ⚙️ Clase 3 - Git y GitHub (Sincronización)
+
+### `🌿 De "master" a "main"`
+
+Antes, la mayoria de los repositorios de Git usaban **master** como nombre de la rama principal.
+
+GitHub a usar **main** como nombre por defecto en los repositorios nuevos.
+
+Por eso, según cómo se haya creado el repositorio y cómo esté configurado Git, puede aparecer cualquiera de los dos nombres.
+
+---
+
+### `❓ ¿Cuándo podemos encontrar "master" o "main"?`
+
+**Repositorios creados localmente**
+
+Al ejecutar **< git init >** el nombre inicial va a depender de cómo esté configurada la instalacion de Git.
+
+Se puede cambiar a mano
+
+```bash
+<git branch -M main>
+```
+
+---
+
+### `Configurar "main" como rama predeterminada`
+
+Se le puede indicar a Git que los repositorios nuevos usen **main**
+
+```bash
+<git config --global init.defaultBranch main>
+```
+
+Desde ese momento, al usar **< git init >** Git va a tomar **main** como rama inical.
+
+---
+
+### `📊 Gitk`
+
+Se puede ver el historial del repositorio de forma gráfica con
+
+```bash
+<gitk>
+```
+
+Gitk mostrara
+
+    🌿 Ramas.
+    
+    🔀 Fusiones.
+    
+    💾 Commits.
+    
+    🏷️ Tags.
+    
+    📜 Historial del repositorio.
+
+---
+
+### `🐧 Instalar Gitk en Linux`
+
+>[🛑 Dato importante: esos comando funcionan especificamente para sistemas Debian y sus derivados, para demas sistemas investigar el comando correspondiente]
+```bash
+<sudo apt-get update>
+<sudo apt-get install gitk>
+```
+
+Luego 
+
+```bash
+<gitk>
+```
+
+---
+
+### `🔄 Actualizar un repositorio local`
+
+Cuando se trabaja en equipos o desde distintas computadoras hoy que mantener actualizado el repositorio local.
+
+Esto ayuda a 
+
+    Evitar conflictos.
+    
+    Trabajar con la última versión.
+    
+    Recibir cambios hechos por otras personas.
+    
+    Mantener las ramas sincronizadas.
+
+**Flujo de trabajo**
+
+```bash
+<cd "nombre-del-repositorio">
+
+<git switch "main">
+<git pull origin main>
+
+<git switch "second">
+<git pull origin main>
+
+
+<git switch "rama-personal">
+<git merge second>
+```
+
+> ⚠️ **IMPORTANTE**
+>
+> Cualquier `<cosa-entre-flechas>` es a modo de ejemplo y debe reemplazarse con su respectivo nombre, comando o aclaración sin incluir las flechas, a menos que se indique lo contrario.
+>
+> Si hay comillas `" "` en el comando es es porque se debe ingresar el nombre correspondiente no indica que deben de llevar si o si.
+
+---
+
+### `🔀 Fetch + Merge`
+
+Primero se descargan las referencias remotas
+
+```bash
+<git fitch>
+```
+
+Despues se pueden integrar
+
+```bash
+<git switch main>
+<git merch origin/main>
+```
+
+---
+
+### `🧠 Diferencia rápida`
+
+    Comando	            Función
+
+    <git fetch> 	    Baja información del repositorio remoto sin fusionarla
+
+    <git pull>	        Baja cambios e intenta integrarlos
+
+    <git merge> 	    Une ramas
+
+    <git push>	        Manda nuestros commits al repositorio remoto
+
+---
 
 ### 🧩 `git <subcomando>`
 
@@ -494,7 +1086,7 @@ para ver el historial de confirmaciones para ese archivo.
 
 ---
 
-# 🌿 RAMAS
+# 🔄 Clase 4 - Primer Push y Área de Trabajo
 
 ### 🌱 `git branch`
 
@@ -512,10 +1104,13 @@ Principalmente se usa para cambiar de rama.
 
 Aunque también puede:
 
-- Crear nuevas ramas.
-- Restaurar archivos a una versión anterior.
-- Ir a una versión de un commit específico.
-- Ir al commit anterior.
+    . Crear nuevas ramas.
+
+    . Restaurar archivos a una versión anterior.
+
+    . Ir a una versión de un commit específico.
+
+    . Ir al commit anterior.
 
 ---
 
@@ -546,7 +1141,7 @@ Esto resultaría en los cambios de `second` aplicándose a `main`.
 
 ---
 
-# ↩️ DESHACER CAMBIOS
+# 🧰 Clase 5 - Git Tag y Versiones
 
 ### ⏪ `git reset <hash-de-commit>`
 
@@ -602,7 +1197,7 @@ git rm <nombre-archivo>
 
 ---
 
-# 🧰 MISCELÁNEOS A SABER
+# 🔄️ Clase 6 - Desacer Cambios y Correcciones
 
 ### 💻 `code`
 
@@ -648,7 +1243,7 @@ Muestra:
 
 ---
 
-# 🔎 GIT DIFF
+# 🔎 Clase 7 - Git Diff
 
 ### `git diff`
 
