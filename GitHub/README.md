@@ -1088,6 +1088,162 @@ para ver el historial de confirmaciones para ese archivo.
 
 # 🔄 Clase 4 - Primer Push y Área de Trabajo
 
+### 🔐 `SSH y GitHub`
+
+Las claves SSH se crean, por lo general, una sola vez por computadora.
+
+Una vez generadas, se le entregan a GitHub la llave pública para poder comunicarse de forma segura y sin tener que autenticarse a mano en cada operación.
+
+>!IMPORTANTE <p>
+    >La única llave que se comparte con GitHub es la **llave pública**
+
+---
+
+### 🔑 `Agregar la clave SSH a GitHub`
+
+Para eso hay que entrar en 
+
+    GitHub
+        ↓
+    Settings
+        ↓ 
+    SSH and GPG keys
+        ↓
+    New SSH key
+
+Despues
+
+1. Se pone un nombre para identificar la computadora.
+
+2. Se pega el contenido de la llave pública.
+
+3. Se guarda la nueva llave SSH.
+
+---
+
+### 🔄 `Cambiar el remoto de HTTPS a SSH`
+
+Si el repositorio ya estaba contectado con HTTOS, se puede cambiar la URL remota con
+
+```bash
+<git remote ser-url origin URL_SSH_DEL_REPO>
+```
+Se puede comprobar el cambio con:
+
+```bash
+<git remote -v>
+```
+
+---
+
+### 📋 `Copiar la llave SSH pública`
+
+🍎 macOS
+
+```bash
+<pbcopy < ~/.ssh/id_rsa.pub>
+```
+
+🪟 Windows — Git Bash
+
+```bash
+<clip < ~/.ssh/id_rsa.pub>
+```
+
+🐧 Linux — Ubuntu
+
+```bash
+<cat ~/.ssh/id_rsa.pub>
+```
+
+>[!Nota]: Si la clave se creo con Ed25519, el archivo podría llamarse
+>
+>id_ed25515.pub
+>
+>En ese caso, por ej:
+>
+><cat ~/.ssh/id_ed25519.pub>
+
+---
+
+### 📤 `Antes de hacer Push`
+
+Cuando se trabaja en equipo conviene revisar que el repositorio local esté actualizado antes de subir los cambios.
+
+Un flujo posible sería:
+
+```bash
+<git fetch>
+<git pull origin main>
+<git push origin main>
+```
+
+[!WARNING]
+Si otra persona tocó los mismo archivos o líeas, pueden aparecer conflictos que habrá que resolver a mano
+
+---
+
+### 👥 `Invitar a un colaborador`
+
+Para sumar a otra persona al repositorio hay que entrar en GitHub y buscar la configuración de colaboradores.
+
+Un recorrido habitual es:
+
+```bash
+Repositorio
+↓
+Settings
+↓
+Collaborators
+↓
+Add people
+```
+
+[!NOTA]
+GitHub puede volver a pedir la contraseña o algun metodo de autenticación de dos factores.
+
+Después:
+
+1. Se busca el nombre de usuario.
+
+2. Se manda la invitación.
+
+3. La persona invitada acepta.
+
+4. Una vez aceptada, ya puede colaborar según los permisos que se le hayan dado.
+
+---
+
+### 🔄 `Primer flujo completo de Push`
+
+```bash
+<git status>
+<git add .>
+<git commit -m "Primer cambio">
+<git pull origin main>
+<git push origin main>
+```
+
+Lo que hace
+
+```bash
+Modificar archivos
+      ↓
+git status "Verifica que archivos esta traqueando, fueron modificados o eliminados"
+      ↓
+git add . "Agrega TODOS los archivos ya sea modificados o agregados reciente mente"
+      ↓
+git commit "Agrega una descripcion de lo que se realizo (moficicar líneas de codigo, modificar archivos, carpetas, etc.)"
+      ↓
+git pull "Baja todos los cambios reciente mente creados"
+      ↓
+git push "sube los cambios agregados a la nube"
+      ↓
+GitHub
+```
+
+--- 
+
 ### 🌱 `git branch`
 
 Sirve para ver las ramas existentes y en cuál estamos parados.
@@ -1142,6 +1298,167 @@ Esto resultaría en los cambios de `second` aplicándose a `main`.
 ---
 
 # 🧰 Clase 5 - Git Tag y Versiones
+
+### 📌 `¿Qué son los Git Tags?`
+
+En Git, las etiquetas o tags sirven para marcar commits que son importantes dentro del historial de un proyecto.
+
+Se suelen usar para identificar versiones como
+
+    v1.0
+
+    v1.1
+
+    v2.0
+
+Resultan muy útiles para señalar lanzamientos o versiones estables.
+
+---
+
+### 🔎 `Listar etiquetas`
+
+Para ver todas las etiquetas existentes
+
+    <git tag>
+
+Ejemplos
+
+
+    v1.0
+
+    v1.1
+
+    v1.2
+
+Tambien se pueden filtrar las etiquetas
+
+```bash
+<git tag -l "v1.*">
+```
+
+---
+
+### 🏷️ `Crear una etiqueta`
+
+Una etiqueta simple se puede crear con
+
+```bash
+<git tag v1.0>
+```
+
+Esto genera una etiqueta que apunta al commit actual.
+
+----
+
+### 📝 `Etiquetas anotadas`
+
+También se puede crear una etiqueta anotada
+
+```bash
+<git tag -a v1.0 -m "Versión 1.0">
+```
+
+Las etiquetas anotadas pueden guardar información extra como:
+
+. 👤 Autor.
+
+. 📧 Correo electrónico.
+
+. 📅 Fecha.
+
+. 💬 Mensaje de la etiqueta.
+
+Resultan muy útiles para versiones o publicaciones importantes.
+
+---
+
+### 🪶 `Etiquetas ligeras`
+
+Una etiqueta ligera funciona como un simple marcador sobre un commit.
+
+```bash
+<git tag v1.0>
+```
+
+No guarda información adicional como un mensaje de etiqueta.
+
+---
+
+### 📤 `Compartir etiquetas`
+
+Los tags no siempre se suben solos al usar git push.
+
+Para subir una etiqueta puntual
+
+```bash
+<git push origin v1.0>
+```
+
+Para subir todas las etiquetas
+
+```bash
+<git push origin --tags>
+```
+
+---
+
+### 🗑️ `Eliminar etiquetas`
+
+Para borrar una etiqueta local
+
+```bash
+<git tag -d v1.0>
+```
+
+Si también se quiere borrar del repositorio remoto
+
+```bash
+<git push origin --delete v1.0>
+```
+
+---
+
+### 🔢 `Versionado`
+
+Una forma común de nombrar versiones es
+
+
+    v1.0.0
+
+Se puede leer comp
+
+    MAJOR.MINOR.PATCH
+
+Ejemplo
+
+
+    v2.4.1
+
+| Número | Significado aproximado |
+| :--- | :--- |
+| 2 | Versión principal |
+| 4 | Nuevas funcionalidades |
+| 1 | Correcciones o ajustes |
+
+---
+
+### 🧠 `Resumen de Tags`
+
+| Acción| Comando |
+| :--- | --- |
+| Ver tags | git tag |
+| Crear tag |	git tag v1.0 |
+| Crear tag anotado |	git tag -a v1.0 -m "Versión 1.0" |
+| Eliminar tag local |	git tag -d v1.0 |
+| Subir un tag |	git push origin v1.0 |
+| Subir todos |	git push origin --tags |
+| Eliminar tag remoto |	git push origin --delete v1.0 |
+
+
+[!TIP]
+Los tags permiten guardar puntos clave del historial del proyecto y asociarlos a una versión concreta.
+
+---
 
 ### ⏪ `git reset <hash-de-commit>`
 
@@ -1199,6 +1516,80 @@ git rm <nombre-archivo>
 
 # 🔄️ Clase 6 - Desacer Cambios y Correcciones
 
+### ❌ `¿Qué pasa si utilizamos el mismo nombre dos veces?`
+
+Los tags tienen que tener nombres únicos dentro del repositorio.
+
+Por ejemplo, si ya existe
+
+```bash
+<git tag v1.0>
+```
+
+y se vuelve a ejecutar
+
+```bash
+<git tag v1.0>
+```
+
+Git va a mostrar un error porque esa etiqueta ya existe.
+
+---
+
+### 🔎 `Comprobar los tags existentes`
+
+```bash
+<git tag>
+```
+
+---
+
+### 🛠️ `Solución`
+
+Si se creó un tag por error, se puede borrar de la siguiente forma
+
+```bash
+<git tag -d v1.0>
+```
+
+Después se puede volver a crear apuntando al commit correcto.
+
+Por ejemplo
+
+```bash
+<git tag v1.0>
+```
+
+Si el tag ya se había subido a GitHub, hay que borrar también la versión remota
+
+```bash
+<git push origin --delete v1.0>
+```
+
+Y después volver a subirlo
+
+```bash
+git push origin v1.0
+```
+
+---
+
+### 🔄 `Flujo para corregir un Tag`
+
+```bash
+Tag incorrecto "Detectamos el Tag incorrecto"
+      ↓
+git tag -d v1.0 "Eliminanos el Tag incorrecto con el argumento (-d)"
+      ↓
+Crear tag correcto "Agregamos el Tag que corresponde"
+      ↓
+git tag v1.0 
+      ↓
+git push origin v1.0 "Subimos el cambio a la nube"
+```
+
+---
+
 ### 💻 `code`
 
 Abre Visual Studio Code.
@@ -1243,7 +1634,7 @@ Muestra:
 
 ---
 
-# 🔎 Clase 7 - Git Diff
+# 🔎 Clase 7 - Git Diff y Estructura del Readme
 
 ### `git diff`
 
@@ -1332,6 +1723,135 @@ git diff <hash1> <hash2>
 
 ---
 
+### 📝 `Documentación del curso`
+
+Git y GitHub tienen muchísimos comandos.
+
+A lo largo de las clases fuimos viendo distintos comandos relacionados con
+
+    📂 Repositorios.
+
+    🌿 Ramas.
+
+    🔀 Merge.
+
+    ☁️ Repositorios remotos.
+
+    🔑 SSH.
+
+    📤 Push.
+
+    📥 Pull.
+
+    🏷️ Tags.
+
+    📄 README.
+
+Como actividad grupal hay que mantener un archivo
+
+```bash
+README.md
+```
+
+con todas las clases y comandos vistos durante el curso.
+
+Este archivo puede estar dentro del directorio:
+
+```bash
+class-git
+```
+
+o dentro de otro directorio que elija el grupo.
+
+---
+
+### 🎯 `Objetivo`
+
+La idea es mantener la documentación de las clases usando Markdown.
+
+El README tiene que contener los temas vistos en clase y actualizarse a medida que aparecen nuevos comandos.
+
+[!IMPORTANT]
+La documentación también es parte del trabajo profesional con Git y GitHub.
+
+---
+
+### 📁 `Ejemplo de estructura`
+
+```bash
+repositorio/
+│
+├── class-git/
+│   └── README.md
+│
+├── ejercicios/
+│
+└── proyectos/
+```
+
+---
+### ⚡ `Comandos rápidos`
+| Comando |	¿Qué hace? |
+| :--- | :--- |
+| git init |	Inicializa un repositorio |
+| git clone URL |	Clona un repositorio |
+| git status |	Muestra el estado de los archivos |
+| git add . |	Agrega cambios al staging |
+| git commit -m "mensaje" |	Crea un commit |
+| git log |	Muestra el historial |
+| git branch |	Muestra las ramas |
+| git checkout rama |	Cambia de rama |
+| git switch rama |	Cambia de rama |
+| git branch -M main |	Renombra la rama actual a main |
+| git fetch |	Descarga referencias del remoto |
+| git pull |	Descarga e integra cambios | 
+| git merge rama |	Fusiona una rama |
+| git push origin main |	Sube cambios a GitHub |
+| git remote -v |	Muestra los repositorios remotos |
+| git remote set-url origin URL |	Cambia la URL del remoto |
+| git tag |	Muestra los tags | 
+| git tag v1.0 |	Crea un tag | 
+| git push origin --tags |	Sube todos los tags |
+| gitk | Abre el visor gráfico de Git |
+
+---
+
+### 🔄 `Flujo básico de Git`
+```bash
+git pull origin main
+       ↓
+git pull origin second
+       ↓
+git pull origin "Rama_de_trabajo"
+       ↓
+Modificar archivos
+       ↓
+git status
+       ↓
+git add .
+       ↓
+git commit
+       ↓
+git pull
+       ↓
+git push origin "Rama_en_la_que_estas_parado"
+       ↓
+     GitHub
+```
+
+---
+
+### 💡 `Regla fácil para recordar`
+| Comando | → | ¿Que hace? |
+| :--- | :---: | :--- |
+| git add | → | Preparo los cambios |
+| git commit | → | Guardo los cambios |
+| git pull | → | Traigo cambios desde GitHub | 
+| git push | → | Envío mis commits a GitHub |
+| git fetch | → | Reviso cambios del remoto |
+
+---
+
 # 💻 SYNTAX ERROR
 
 > **Git & Bash Cheat Sheet**
@@ -1339,3 +1859,9 @@ git diff <hash1> <hash2>
 > `git` • `bash` • `github`
 >
 > **Aprender • Practicar • Crear**
+
+---
+
+***🖨️ Este perfil fue revisado, sellado y aprobado por el Departamento de Burocracia de Git***
+  
+  `N° de expediente: GIT-2026-003 | Fecha de emisión: Hoy | Validez: Hasta el próximo commit --force`
