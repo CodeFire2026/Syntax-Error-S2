@@ -1,59 +1,47 @@
 Tarea:
-Así como yo aclare 5 puntos importantes de la función para sumar, deben mostrar el significado al español de las diferentes funciones y sus puntos importantes para saber que hacen, de los temas que están más arriba, sin incluir los ejemplos:
 ---
-1️⃣ Funciones tienen que ver con la manipulación de datos:<p>
-        Son funciones diseñadas para procesar, transformar, filtrar ordenar o modificar colecciones y estructura de datos
+        Estas funciones tienen que ver con la manipulación de datos
 
-        Sus puntos claves son:
+calculateTotalPrice(): `Calcular precio total`. Se encarga de sumar o calcular el costo final total de un conjunto de productos o servicios
 
-            .No modificar nesesariamente el origen si se usan metodos inmutables
-            .Permite trasformar grandes volumenes de datos en estructuras mas simples
-            .Facilitar la busqueda y extraccion de l informacion especifica
-            .Optimizar la logica al evitar bucles for o while manuales
-            .Reciben colecciones de entrada y devuelven colecciones modificada o valores calcualdos.
----
-2️⃣ Eventos o Interacción:<p>
-        Mecanismo que permite a la aplicacion reaccionar ante las acciones del usuario, o cambios del sistema
+formatUserInput(): `Formatear entrada del usuario`. Se utiliza para dar formato o limpiar los datos ingresados por un usuario (por ejemplo, quitar espacios de más, ajustar mayúsculas/minúsculas).
 
-        Sus puntos claves son:
+validateEmailAddress(): `Validar dirección de correo electrónico`. Comprueba si la dirección de email ingresada cumple con la estructura adecuada y es válida.
 
-            .Funcionan bajo un esquema asíncrono basado en escuchadores de eventos (listeners).
+convertToCamelCase(): `Convertir a formato camelCase`. Transforma un texto para que siga la convención camelCase (donde las palabras se unen y cada palabra nueva empieza con mayúscula, excepto la primera).
 
-            .Capturan el contexto de la acción; por ejemplo, qué elemento fue presionado o qué tecla se pulsó.
+filterActiveUsers(): `Filtrar usuarios activos`. Selecciona y devuelve únicamente a los usuarios que se encuentran en estado activo dentro de una lista o base de datos.
 
-            .Desencadenan funciones de respuesta cuando se activa la condición.
+        Eventos o Interacción
 
-            .Permiten prevenir el comportamiento por defecto de la interfaz si es necesario.
+handleButtonClick(): `Manejar clic en botón`. Ejecuta la lógica o acción programada cuando el usuario hace clic en un botón.
 
-            .Hacen que las páginas y aplicaciones de software sean dinámicas e interactivas.
----
-3️⃣ Operaciones CRUD:<p>
-        Acrónimo que engloba las cuatro operaciones fundamentales de persistencia de datos: Create (Crear), Read (Leer/Obtener), Update (Actualizar) y Delete (Eliminar).
+onFormSubmit(): `Al enviar el formulario`. Se activa automáticamente cuando el usuario envía un formulario (por ejemplo, al hacer clic en "Enviar" o presionar Enter).
 
-        Sus puntos claves son:
+toggleDarkMode(): `Alternar modo oscuro`. Cambia o alterna el tema de la interfaz entre el modo oscuro y el modo claro.
 
-            .Crear: Inserta nuevos registros o recursos en el sistema o base de datos.
+updateProgressBar(): `Actualizar barra de progreso`. Modifica el estado o porcentaje visible de una barra de progreso para reflejar un avance
 
-            .Leer: Consulta y recupera registros existentes sin modificar su estado.
+initializeApp(): `Inicializar aplicación`. Prepara y carga los recursos, configuraciones o datos iniciales necesarios para que la aplicación empiece a funcionar.
 
-            .Actualizar: Modifica la información existente de un registro guardado.
+        Operaciones CRUD
 
-            .Eliminar: Remueve o borra permanentemente un registro de la base de datos.
+createNewUser(): `Crear nuevo usuario`. Se encarga de registrar o añadir un nuevo usuario en la base de datos o sistema (corresponde a la C de Create).
 
-            .Representan la base operativa de la mayoría de las API REST y sistemas de gestión.
----
-4️⃣ Utilidades:<p>
-        Funciones auxiliares o de soporte genéricas que resuelven tareas comunes y repetitivas a lo largo de una aplicación.
+fetchUserData(): `Obtener datos del usuario`. Consulta y trae la información o perfil de un usuario existente (corresponde a la R de Read / Retrieve).
 
-        Sus puntos clave son:
+updateUserProfile(): `Actualizar perfil de usuario`. Modifica o edita la información existente del perfil de un usuario (corresponde a la U de Update).
 
-            .Son funciones puras e independientes de la lógica de negocio principal.
+deleteUserAccount(): `Eliminar cuenta de usuario`. Borra o elimina definitivamente la cuenta de un usuario de la base de datos (corresponde a la D de Delete)
 
-            .Manejan tareas comunes como formateo de fechas, validación de cadenas o cálculos matemáticos.
+         Utilidades
 
-            .Promueven la reutilización de código y evitan la duplicación (principio DRY).
+generateRandomId(): `Generar ID aleatorio`. Crea un identificador único y aleatorio para asignar a elementos, registros o recursos.
 
-            .Suelen organizarse en archivos o módulos separados para facilitar su mantenimiento.
+formatCurrency(): `Formatear moneda`. Convierte un valor numérico a un formato de moneda específico (añadiendo el símbolo de moneda, separadores de miles y decimales).
 
-            .Simplifican la lectura del código principal al delegar tareas operativas secundarias.
----            
+debounceSearch(): `Retrasar o controlar la búsqueda (Debounce)`. Retrasa la ejecución de la función de búsqueda hasta que el usuario deja de escribir por unos milisegundos, evitando realizar peticiones en cada pulsación de tecla.
+
+sanitizeInput(): `Sanitizar/limpiar entradav`. Limpia los datos ingresados por el usuario eliminando código o caracteres potencialmente peligrosos para prevenir vulnerabilidades de seguridad (como ataques XSS o inyecciones).
+
+checkPermissions(): `Verificar permisos`. Comprueba si el usuario actual cuenta con los permisos necesarios para realizar una acción o acceder a cierto recurso.
